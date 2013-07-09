@@ -35,7 +35,7 @@ module Tweetlr
         @log.info "creating a new tweetlr instance using this config: #{@tweetlr_config.inspect}"   
         EventMachine::run do 
           EventMachine::add_periodic_timer( @tweetlr_config[:update_period] ) do
-            response = Tweetlr::Core.crawl(@tweetlr_config)
+            response = Tweetlr::Core.crawl(@tweetlr_config.merge(config))
             File.open(tid_file, "w+") { |io| io.write(response[:since_id]) }
             @tweetlr_config.merge! response
            end
