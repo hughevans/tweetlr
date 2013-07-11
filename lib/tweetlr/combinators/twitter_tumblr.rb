@@ -52,7 +52,7 @@ private
       end
       tumblr_post[:state] = state
       shouts = " #{@shouts}" if @shouts
-      tumblr_post[:caption] = %?<a href="http://twitter.com/#{user}/statuses/#{tweet_id}" alt="tweet">@#{user}</a>#{shouts}: #{tweet['text']}? 
+      tumblr_post[:caption] = %?<div class="caption"><img src="#{tweet['user']['profile_image_url']}" /><span class="user">@#{user}</span><div class="tweet">#{tweet['text']}</div></div>?
       #TODO make the caption a bigger matter of yml/ general configuration
       tumblr_post  
     end
